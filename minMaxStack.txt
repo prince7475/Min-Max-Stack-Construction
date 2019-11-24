@@ -1,0 +1,66 @@
+Write a min max stack class
+The class should support pushing and popping values on and off the stack,
+peeking at values at the top of the stack and getting both the min and max values
+
+class MinMaxStack {
+    constructor(){
+      this.stack = []
+      this.minMaxStack = [{min: Infinity, max: -Infinity}]
+    }
+    
+    pop(){
+      let valueRemoved = this.stack.pop()
+      this.minMaxStack.pop()
+      return valueRemoved
+    }
+    
+    push(num){
+      this.stack.push(num)
+      let newMin = Math.min(num, this.getMin())
+      let newMax = Math.max(num, this.getMax())
+      this.minMaxStack.push({min: newMin, max: newMax})
+    }
+    
+    peek(){
+      return this.stack[this.stack.length - 1]
+    }
+    
+    getMin(){
+     return this.minMaxStack[this.minMaxStack.length - 1].min
+    }
+    
+    getMax(){
+      return this.minMaxStack[this.minMaxStack.length - 1].max
+    }
+}
+
+2 array
+  - minMaxStack = [{min: Infinity, max: -Infinity}]
+  - stack = [12]
+  
+  -- push(num){
+      stack.push(num)
+      let lastPushed = this.minMaxStack[this.minMaxStack.length - 1]
+      let newMin = Math.min(lastPushed.min , num)
+      let newMax = Math.max(lastPushed.max, num)
+      let newMinMaxObj = {min: newMin, max: newMax}
+      this.minMaxStack.push(newMinMaxObj)
+    }
+    
+    -- pop(){
+      let valuePoped = stack.pop()
+      minMaxStack.pop()
+      return valuePoped
+    }
+    
+    peek(){
+      return this.stack[this.stack.length - 1]
+    }
+    
+    getMin(){
+      this.minMaxStack[this.minMaxStack.length - 1].min
+    }
+    
+    getMax(){
+      this.minMaxStack[this.minMaxStack.length - 1].max
+    }
